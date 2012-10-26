@@ -40,12 +40,12 @@ from time import sleep, time
 
 class Tail(object):
     """The Tail monitor object."""
-    
-    def __init__(self, path, only_new = False,
-                 seek = 0, #jump to line number
-                 min_sleep = 1,
-                 sleep_interval = 1,
-                 max_sleep = 60,
+
+    def __init__(self, path, only_new=False,
+                 seek=0, #jump to line number
+                 min_sleep=1,
+                 sleep_interval=1,
+                 max_sleep=60,
                  cache_size=128,
                  store_pos=False):
         """Initialize a tail monitor.
@@ -74,7 +74,7 @@ class Tail(object):
         self.cache_size = cache_size
         self.store_pos = store_pos
         self.path = abspath(path)
-        self.f = open(self.path,"r")
+        self.f = open(self.path, "r")
         self.min_sleep = min_sleep * 1.0
         self.sleep_interval = sleep_interval * 1.0
         self.max_sleep = max_sleep * 1.0
@@ -88,7 +88,7 @@ class Tail(object):
         self.last_read = time()         # when did I last get some data?
         self.queue = []                 # queue of lines that are ready
         self.window = []                # sliding window for dynamically
-                                        # adjusting the sleep_interval
+        # adjusting the sleep_interval
 
     def seek_bytes(self, bs):
         self.f.seek(bs)
@@ -116,7 +116,7 @@ class Tail(object):
                 if i_stop > tot_stop: tot_stop = i_stop
         if purge_idx >= 0:
             # clean the old records out of the window (slide the window)
-            self.window = self.window[purge_idx+1:]
+            self.window = self.window[purge_idx + 1:]
         if tot_n > 0:
             # recompute; stay within bounds
             self.sleep_interval = (tot_stop - tot_start) / tot_n
@@ -135,7 +135,7 @@ class Tail(object):
         if not line.endswith("\n"):
             self.f.seek(self.last_pos)
             if not self.store_pos:
-               return ""
+                return ""
             return (self.f.tell(), "")
 
         if not self.store_pos:
@@ -164,7 +164,7 @@ class Tail(object):
 
         # back cursor after exiting while, because of the last line
         if to_seek: self.f.seek(self.last_pos)
-        
+
         # how many did we just get?
         num_read = len(self.queue) - old_len
         if num_read > 0:
@@ -200,7 +200,7 @@ class Tail(object):
         line = self._dequeue()
         if line:
             return line
-        
+
         # ok, we are out of cache; let's get some lines from the file
         if self._fill_cache() > 0:
             # got some
