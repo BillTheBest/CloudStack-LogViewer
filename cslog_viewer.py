@@ -232,10 +232,12 @@ ev = eslog_viewer()
 if __name__ == "__main__":
     log_file = "test:"
     print log_file
-    if len(sys.argv) != 1:
+    print "sys.argv 0" , sys.argv[0]
+    print "sys.argv 1" , sys.argv[1]
+    if len(sys.argv) != 2:
         print " need cloudstack log file name!"
         exit(1)
-    log_file = sys.argv[0]
+    log_file = sys.argv[1]
     signal.signal(signal.SIGINT, handler)
 
     tlog = threading.Thread(target=thread_keyboard_monitor, args=(ev,))
