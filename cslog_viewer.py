@@ -103,7 +103,7 @@ class eslog_viewer:
         s = self.remove_time_prefix(s)
 
     def is_ommit_class(self,cls_name):
-        if cls_name in "Request ":
+        if cls_name in "Request DownloadListener AlterManagerImpl DirectAgentAttach":
             return True
         return False
         pass
@@ -120,6 +120,8 @@ class eslog_viewer:
         if tmp_content.startswith("VmStatsCollector "):
             return
         if tmp_content.startswith("HostStatsCollector "):
+            return
+        if tmp_content.startswith("StorageStatsCollector "):
             return
         if intend:
             print '\t\t', content_str
