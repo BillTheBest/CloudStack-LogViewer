@@ -110,6 +110,17 @@ class eslog_viewer:
 
 
     def print_and_cache(self, content_str, intend=False):
+        #omit content
+        tmp_content = content_str
+        tmp_content = tmp_content.strip()
+        if tmp_content.startswith("Ping "):
+            return
+        if tmp_content.startswith("cleaning up "):
+            return
+        if tmp_content.startswith("VmStatsCollector "):
+            return
+        if tmp_content.startswith("HostStatsCollector "):
+            return
         if intend:
             print '\t\t', content_str
         else:
