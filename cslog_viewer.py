@@ -103,7 +103,8 @@ class eslog_viewer:
         s = self.remove_time_prefix(s)
 
     def is_ommit_class(self,cls_name):
-        if cls_name in "Request DownloadListener AlterManagerImpl DirectAgentAttach":
+        cls_name=cls_name.strip()
+        if cls_name in "Request StatsCollector DownloadListener AlterManagerImpl DirectAgentAttache ":
             return True
         return False
         pass
