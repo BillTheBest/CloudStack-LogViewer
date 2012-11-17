@@ -90,11 +90,23 @@ class eslog_viewer:
             self.curr_class = class_str
             if self.curr_class != self.pre_class:
                 #print class_str ,'\t', type_str ,'\t\t\t'
-                self.print_and_cache(class_str, False)
-                self.pre_class = self.curr_class
-            self.print_and_cache(content_str, True)
+                if self.is_ommit_class( self.curr_class ):
+                    pass
+                else:
+                    self.print_and_cache(class_str, False)
+                    self.pre_class = self.curr_class
+            if self.is_ommit_class( self.curr_class ):
+                pass
+            else:
+                self.print_and_cache(content_str, True)
             pass
         s = self.remove_time_prefix(s)
+
+    def is_ommit_class(self,cls_name):
+        if cls_name in "Request ":
+            return True
+        return False
+        pass
 
 
     def print_and_cache(self, content_str, intend=False):
