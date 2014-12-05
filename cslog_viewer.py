@@ -32,6 +32,17 @@ logpats_time = r'((\d+)-(\d+)-(\d+)) ((\d+):(\d+):(\d+),(\d+)) (\S+) \[(.*?)\] \
 logpat_time = re.compile(logpats_time)
 
 
+restrict_logpats_re = r'(?P<date>(\d+)-(\d+)-(\d+)) (?P<time>(\d+):(\d+):(\d+),(\d+)) (?P<flag>(\S+))( |  )(?P<cls>\[(.*)\]) (?P<context>\(\S+:\S+\)) (?P<content>(.*))'
+restrict_logpats = re.compile(logpats_time)
+
+
+#debug            0                           1                  2     3     4          5            6
+#logpats_time = r'(?P<date>(\d+)-(\d+)-(\d+)) (?P<time>(\d+):(\d+):(\d+),(\d+)) (?P<flag>(\S+))( |  )(?P<cls>\[(.*)\]) (?P<context>\((.*):(.*)\)) (?P<content>(.*))'
+#logpat_time = re.compile(logpats_time)
+
+
+
+
 class eslog_viewer:
     def set_cache_flag( self, iscache ):
         self.is_cache = iscache
