@@ -22,4 +22,18 @@ python cslog_viewer.py /var/log/cloudstack/management/management-server.log
 
 
 
+another cloudstack log tool:
+
+send cloudstack log to browser:
+
+http://www.cloudstack-china.org/2012/12/1531.html
+
+
+
+
+
+
+
+
+
 
