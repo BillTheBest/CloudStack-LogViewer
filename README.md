@@ -5,6 +5,9 @@ A CloudStack Log Helper for debuging easily.
 
 production environment:
 
+only support : python 2.7+
+
+
 
 step1:
 cd ~

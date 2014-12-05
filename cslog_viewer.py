@@ -62,7 +62,8 @@ class eslog_viewer:
             s += "\r\n"
         mr = self.is_start_with_time(s)
         if mr is None:
-            pass
+            print s
+            return
         else:
             if False:  # for debug log format
                 print "0", mr.group(0)
@@ -256,10 +257,10 @@ def handler(signum, frame):
 
 ev = eslog_viewer()
 if __name__ == "__main__":
-    log_file = "test:"
+    log_file = "/var/log/cloudstack/management/management-server.log"
     print log_file
-    print "sys.argv 0" , sys.argv[0]
-    print "sys.argv 1" , sys.argv[1]
+    #print "cslog_viewer.py" , sys.argv[0]
+    print "log file name is :" , sys.argv[1]
     if len(sys.argv) != 2:
         print " need cloudstack log file name!"
         exit(1)
